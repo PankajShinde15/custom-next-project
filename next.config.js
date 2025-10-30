@@ -1,10 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',  // Required for static site generation
-  basePath: '/custom-next-project', // Should match your repository name
+  output: 'export',
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '/custom-next-project',
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '/custom-next-project',
   images: {
-    unoptimized: true, // Required for static export
+    unoptimized: true,
   },
+  trailingSlash: true,
+  // This is needed for GitHub Pages
+  reactStrictMode: true,
 }
 
 module.exports = nextConfig
